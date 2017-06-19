@@ -12,3 +12,5 @@ CREATE TABLE  IF NOT EXISTS `civicrm_groupadmin_entity` (
   CONSTRAINT FK_civicrm_groupadmin_entity_contact_id FOREIGN KEY (`contact_id`)
     REFERENCES `civicrm_contact`(`id`) ON DELETE CASCADE
 )  ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+ALTER TABLE `civicrm_groupadmin_entity` ADD UNIQUE `unique_index_group_contact`(`group_id`, `contact_id`);
