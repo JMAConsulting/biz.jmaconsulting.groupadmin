@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/groupadmin</path>
+    <page_callback>CRM_Groupadmin_Form_Group</page_callback>
+    <title>Assign staff to groups</title>
+    <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+</menu>
