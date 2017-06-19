@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<extension key="biz.jmaconsulting.groupadmin" type="module">
+  <file>groupadmin</file>
+  <name>Group Administrator</name>
+  <description>This extension allows one to specify administrators for groups in CiviCRM.</description>
+  <license>AGPL-3.0</license>
+  <maintainer>
+    <author>Edsel</author>
+    <email>edsel.lopez@jmaconsulting.biz</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">https://github.com/JMAConsulting/biz.jmaconsulting.groupadmin</url>
+    <url desc="Documentation">https://github.com/JMAConsulting/biz.jmaconsulting.groupadmin/blob/master/README.md</url>
+    <url desc="Support">https://github.com/JMAConsulting/biz.jmaconsulting.groupadmin/issues</url>
+    <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
+  </urls>
+  <releaseDate>2017-06-19</releaseDate>
+  <version>1.0</version>
+  <develStage>stable</develStage>
+  <compatibility>
+    <ver>4.7</ver>
+  </compatibility>
+  <comments>Developed for use on Brescia (crm.bresciauc.com)</comments>
+  <civix>
+    <namespace>CRM/Groupadmin</namespace>
+  </civix>
+</extension>
