@@ -45,8 +45,6 @@ class CRM_Groupadmin_Form_Group extends CRM_Core_Form {
     }
 
     CRM_Groupadmin_BAO_Groupadmin::createEntity($groupAdminParams);
-    CRM_Core_Error::debug( '$groupAdminParams', $groupAdminParams );
-    exit;
     parent::postProcess();
   }
 }
