@@ -108,6 +108,30 @@ function groupadmin_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
 }
 
 /**
+ * Implements hook_civicrm_navigationMenu().
+ *
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_navigationMenu
+ *
+ */
+function groupadmin_civicrm_navigationMenu(&$menu) {
+  $groupID = CRM_Core_DAO::getFieldValue('CRM_Core_BAO_Navigation', 'Contacts', 'id', 'name');
+  $maxID = CRM_Core_DAO::singleValueQuery("SELECT max(id) FROM civicrm_navigation");
+  $menu[$groupID]['child'][$maxID + 1] = array(
+    'attributes' => array(
+      'label' => ts('Assign Group Administrator', array('domain' => 'biz.jmaconsulting.groupadmin')),
+      'name' => 'groupadmin',
+      'url' => 'civicrm/groupadmin?reset=1',
+      'permission' => 'edit groups',
+      'operator' => NULL,
+      'separator' => NULL,
+      'parentID' => $groupID,
+      'navID' => $maxID + 1,
+      'active' => 1,
+    ),
+  );
+}
+
+/**
  * Implementation of hook_civicrm_pre
  *
  * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_pre
