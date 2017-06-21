@@ -106,3 +106,29 @@ function groupadmin_civicrm_caseTypes(&$caseTypes) {
 function groupadmin_civicrm_alterSettingsFolders(&$metaDataFolders = NULL) {
   _groupadmin_civix_civicrm_alterSettingsFolders($metaDataFolders);
 }
+
+/**
+ * Implementation of hook_civicrm_pre
+ *
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_pre
+ */
+function groupadmin_civicrm_pre($op, $objectName, $id, &$params) {
+  if ($op == "create" && $objectName == "Activity" ) {
+    $activityTypeID = CRM_Core_PseudoConstant::getKey('CRM_Activity_BAO_Activity', 'activity_type_id', 'Inbound SMS');
+    if (CRM_Utils_Array::value('activity_type_id', $params) == $activityTypeID && CRM_Utils_Array::value('result', $params)) {
+      // This is a callback activity being processed for Inbound SMS.
+
+      // Change status to scheduled.
+      $activityStatusID = CRM_Core_PseudoConstant::getKey('CRM_Activity_BAO_Activity', 'activity_status_id', 'Scheduled');
+      $params['status_id'] = $activityStatusID;
+
+      // Modify the $params to change the assignee contact ID according to current group administrator.
+      // We use contact ID of sender and phone number to determine which group the contact is in.
+      $admin = CRM_Groupadmin_BAO_Groupadmin::getGroupAdmin($params['target_contact_id'], $params['phone_number'], $activityTypeID, $activityStatusID);
+
+      if ($admin) {
+        $params['assignee_contact_id'] = $admin;
+      }
+    }
+  }
+}
