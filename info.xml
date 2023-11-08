@@ -18,10 +18,20 @@
   <version>1.0</version>
   <develStage>stable</develStage>
   <compatibility>
-    <ver>4.7</ver>
+    <ver>5.38</ver>
   </compatibility>
   <comments>Developed for use on Brescia (crm.bresciauc.com)</comments>
   <civix>
     <namespace>CRM/Groupadmin</namespace>
+    <format>23.02.1</format>
   </civix>
+  <mixins>
+    <mixin>menu-xml@1.0.0</mixin>
+    <mixin>smarty-v2@1.0.1</mixin>
+  </mixins>
+  <classloader>
+    <psr0 prefix="CRM_" path="."/>
+    <psr4 prefix="Civi\" path="Civi"/>
+  </classloader>
+  <upgrader>CRM_Groupadmin_Upgrader</upgrader>
 </extension>
